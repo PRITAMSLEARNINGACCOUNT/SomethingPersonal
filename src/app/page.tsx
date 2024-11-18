@@ -6,7 +6,13 @@ export default function Home() {
   async function HandleClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
 
-    let R = await fetch("api/compile");
+    let R = await fetch("api/compile", {
+      method: "POST",
+      body: JSON.stringify({
+        Code: (document.getElementById("CodingSpace") as HTMLTextAreaElement)
+          .value,
+      }),
+    });
     R = await R.json();
     console.log((R as MyResponse).message);
 
