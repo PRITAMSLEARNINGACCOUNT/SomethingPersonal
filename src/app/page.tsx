@@ -1,12 +1,14 @@
-import { exec } from "child_process";
 import Image from "next/image";
-import { MouseEventHandler } from "react";
+import { MyResponse } from "../../Interface";
 
 export default function Home() {
-  function HandleClick() {
-    const code = document.getElementById("CodingSpace") as HTMLTextAreaElement;
-    const compiledCode = code.value;
-    exec();
+  async function HandleClick() {
+    let R = await fetch("api/compile");
+    R = await R.json();
+    console.log((R as MyResponse).message);
+
+    // const code = document.getElementById("CodingSpace") as HTMLTextAreaElement;
+    // const compiledCode = code.value;
   }
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
