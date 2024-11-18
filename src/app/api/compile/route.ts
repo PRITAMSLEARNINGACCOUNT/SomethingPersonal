@@ -7,7 +7,7 @@ import { exec } from "child_process";
 
 export async function POST(Request: NextRequest) {
   try {
-    let { Code } = await Request.json();
+    const { Code } = await Request.json();
     // Create a temporary file in the /tmp directory
     const tempFilePath = path.join("/tmp", "temp.c");
 
