@@ -1,8 +1,11 @@
+"use client";
 import Image from "next/image";
 import { MyResponse } from "../../Interface";
 
 export default function Home() {
-  async function HandleClick() {
+  async function HandleClick(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+
     let R = await fetch("api/compile");
     R = await R.json();
     console.log((R as MyResponse).message);
